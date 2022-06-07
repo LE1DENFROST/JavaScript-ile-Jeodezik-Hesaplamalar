@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONUSUM Cografi/UTM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src= 'hesap.js' ></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" /> 
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+</head>
+<body>
+<audio autoplay>
+    <source src="sound/sound.mp3" type="audio/mpeg">
+</audio>
+   
+
+<div class="slider">
+    <div class="slide-track">
+      <div class="slide">
+        <img src="sliderwp/autocad.png" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/earth.jpg" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/erdas.jpg" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/esri.jpg" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/netcad.png" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/csharp.png" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/css.jpg" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/html.jpg" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/javascript.png" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/python.png" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/mc.jpg" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/android.png" height="100" width="250" alt="" />
+      </div>
+      <div class="slide">
+        <img src="sliderwp/qgis.png" height="100" width="250" alt="" />
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="dis_bolme">
+  <div class="nav-bar">
+    <ul>
+      <li><a href="https://wwww.facebook.com">Home</a></li>
+      <li><a href="news.asp">News</a></li>
+      <li><a href="contact.asp">Contact</a></li>
+      <li><a href="about.asp">About</a></li>
+    </ul>
+  </div>
+     
+  
+  <div class="form">
+        <h1>COĞRAFİ > UTM / TM</h1>
+<input type="text" id="fi" placeholder="Enlem değeri giriniz..">
+<input type="text" id="utmx" placeholder="UTM X Koordinatınız.."><br><br>
+<input type="text" id="lamda" placeholder="Boylam değeri giriniz..">
+<input type="text" id="utmy" placeholder="UTM Y Koordinatınız.."><br><br>
+<input type="text" id="dom" placeholder="Dilim Orta Meridyeni giriniz..">
+<input type="text" id="tmx" placeholder="TM X Koordinatınız.."><br><br>
+<select id="elpsd" onchange="setElpsd()">
+    <option value="0"selected>WGS84</option>
+    <option value="1">GRS80</option>
+    <option value="2" >ED50</option>
+    <option value="3">Bessel</option>
+</select >   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" id="tmy" class="tmy" placeholder="TM Y Koordinatınız.."><br><br>
+<button class="btn-1" onclick="tmkoordinat()" >Coğrafi > TM</button>
+<button class="btn-1" onclick="utmkoordinat()" >Coğrafi >UTM</button><br><br>
+<button class="btn-1" onclick="show()" >Göster</button>
+<button class="btn-1" onclick="resetMap()"  >Temizle</button>   
+</div>
+
+<div id="map">
+    <script src= 'map-label.js' ></script>
+</div>
+
+<div id="social-item">
+    <a href="https://www.facebook.com/LE1DENFROST"><img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" /></a>
+  </div>
+  <div id="social-item">
+    <a href="https://www.instagram.com/sav1tar46/"><img src="https://img.icons8.com/bubbles/100/000000/instagram-new.png" /></a>
+  </div>
+  <div id="social-item">
+    <a href="https://twitter.com/EjderErdoan4"><img src="https://img.icons8.com/bubbles/100/000000/twitter.png" /></a>
+  </div>
+</div>
+
+
+
+
+<script>
+    
+function utmkoordinat(){
+
+    document.getElementById("utmx").value = UTMX(document.getElementById("lamda").value,document.getElementById("dom").value,document.getElementById("fi").value);
+    document.getElementById("utmy").value = UTMY(document.getElementById("lamda").value,document.getElementById("dom").value,document.getElementById("fi").value);
+
+}
+
+function tmkoordinat(){
+
+document.getElementById("tmx").value = TMX(document.getElementById("lamda").value,document.getElementById("dom").value,document.getElementById("fi").value);
+document.getElementById("tmy").value = TMY(document.getElementById("lamda").value,document.getElementById("dom").value,document.getElementById("fi").value);
+
+}
+
+</script>
+</body>
+</html>
